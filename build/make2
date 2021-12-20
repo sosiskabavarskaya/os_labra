@@ -1,0 +1,15 @@
+all: main.exe
+clear:
+	rm *.o main.exe -rf
+install:
+	install ./main.exe /usr/local/bin
+uninstall:
+	rm -rf /usr/local/bin/main.exe
+main.o: ../src/main.c
+	gcc -c -o main.o ../src/main.c
+func1.o: ../src/func1.c
+	gcc -c -o func1.o ../src/func1.c
+func22.o: ../src/func22.c
+	gcc -c -o func22.o ../src/func22.c
+main.exe: main.o func1.o func22.o
+	gcc -o main.exe main.o func1.o func22.o
